@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../assets/logo.svg";
+import burger from "../assets/burger-menu-icon.svg";
+import iconclose from "../assets/icon-close.svg";
 
 const Banner = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <>
       <header className="header">
@@ -37,22 +40,19 @@ const Banner = () => {
             <button
               className="header__button button modal-btn-open"
               type="button"
+              onClick={() => setIsModalOpen(true)}
             >
               Замовити дзвінок
             </button>
             <button className="header__burger menu-btn-open" type="button">
-              <svg width="24" height="24">
-                <use href="../assets/icons.svg#icon-menu"></use>
-              </svg>
+              <img src={burger} alt="Menu Icon" width="24" height="24" />
             </button>
             <div className="mobile-menu">
               <button
                 className="mobile-menu__btn-close menu-btn-close"
                 type="button"
               >
-                <svg width="24" height="24">
-                  <use href="../assets/icons.svg#icon-close"></use>
-                </svg>
+                <img src={iconclose} width="24" height="24" />
               </button>
               <a className="mobile-menu__logo" href="/">
                 <img
@@ -112,6 +112,77 @@ const Banner = () => {
           </ul>
         </div>
       </section>
+      <div className={isModalOpen ? "backdrop" : "backdrop is-hidden"}>
+        <div className="modal">
+          <button
+            className="modal__btn-close modal-btn-close"
+            type="button"
+            onClick={() => setIsModalOpen(false)}
+          >
+            <svg width="24" height="24">
+              <use href="./images/icons.svg#icon-close"></use>
+            </svg>
+          </button>
+          <h2 className="modal__title">Замовити дзвінок</h2>
+          <p className="modal__text">
+            Залишіть заявку та наш спеціаліст зв'яжеться з Вами!
+          </p>
+          <form name="modal-form" autocomplete="off">
+            <div className="modal__form-field input">
+              <label className="input__label visually-hidden" for="user-name">
+                Імʼя
+              </label>
+              <input
+                className="input__control"
+                type="text"
+                name="user-name"
+                id="user-name"
+                placeholder="Імʼя"
+                required
+              />
+            </div>
+
+            <div className="modal__form-field input">
+              <label className="input__label visually-hidden" for="user-tel">
+                Телефон
+              </label>
+              <input
+                className="input__control"
+                type="tel"
+                name="user-tel"
+                id="user-tel"
+                placeholder="Телефон"
+                pattern="^\+[0-9]{12}"
+                required
+              />
+            </div>
+
+            <div className="modal__form-field input">
+              <label className="input__label visually-hidden" for="user-email">
+                Електронна пошта
+              </label>
+              <input
+                className="input__control"
+                type="email"
+                name="user-email"
+                id="user-email"
+                placeholder="Електронна пошта"
+                required
+              />
+            </div>
+
+            <button className="modal__button button" type="submit">
+              Замовити дзвінок
+            </button>
+            <p className="form-terms">
+              Натискаючи на кнопку я погоджуюсь з
+              <a className="form-terms__link" href="#">
+                політикою конфіденційності
+              </a>
+            </p>
+          </form>
+        </div>
+      </div>
     </>
   );
 };

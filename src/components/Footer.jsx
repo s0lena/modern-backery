@@ -1,5 +1,7 @@
 import React from "react";
-import logo from "../assets/logo.svg";
+import logo from "../assets/icons/logo.svg";
+import instagramIcon from "../assets/icons/instagram-icon.svg";
+import facebookIcon from "../assets/icons/facebook-icon.svg";
 
 const Footer = () => {
   return (
@@ -13,6 +15,7 @@ const Footer = () => {
                   <img src={logo} alt="Logo" />
                 </a>
               </div>
+              {/* Footer Menu */}
               <ul className="footer__menu">
                 <li>
                   <a className="link" href="#traditions-section">
@@ -36,6 +39,7 @@ const Footer = () => {
                 </li>
               </ul>
             </nav>
+            {/* Footer contacts */}
             <address className="footer__address">
               <div className="footer__contacts">
                 <ul className="footer__address-list">
@@ -65,28 +69,27 @@ const Footer = () => {
                     </a>
                   </li>
                 </ul>
+                {/* Footer Socials */}
                 <div className="footer__socials">
                   <a href="#">
-                    <svg
+                    <img
                       className="footer__socials-icon"
                       width="32"
                       height="32"
-                    >
-                      <use href="./images/icons.svg#icon-facebook"></use>
-                    </svg>
+                      src={facebookIcon}
+                    ></img>
                   </a>
                   <a href="#">
-                    <svg
+                    <img
                       className="footer__socials-icon"
                       width="32"
                       height="32"
-                    >
-                      <use href="./images/icons.svg#icon-instagram"></use>
-                    </svg>
+                      src={instagramIcon}
+                    ></img>
                   </a>
                 </div>
               </div>
-
+              {/*Footer Policy Terms*/}
               <div className="footer__address-info">
                 <a className="footer__address-link" href="#" target="_blank">
                   Політика конфіденційності

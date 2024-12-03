@@ -1,10 +1,15 @@
 import React, { useState } from "react";
-import logo from "../assets/logo.svg";
-import burger from "../assets/burger-menu-icon.svg";
-import iconclose from "../assets/icon-close.svg";
+import logo from "../assets/icons/logo.svg";
+import logodark from "../assets/icons/logo-dark.svg";
+import burger from "../assets/icons/burger-menu-icon.svg";
+import iconclose from "../assets/icons/icon-close.svg";
 
 const Banner = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isBurgerOpen, setIsBurgerOpen] = useState(false);
+  const disableScroll = () =>
+    document.body.classList.toggle("is-scroll-disabled");
+
   return (
     <>
       <header className="header">
@@ -40,43 +45,47 @@ const Banner = () => {
             <button
               className="header__button button modal-btn-open"
               type="button"
-              onClick={() => setIsModalOpen(true)}
+              onClick={() => (setIsModalOpen(true), disableScroll())}
             >
               Замовити дзвінок
             </button>
-            <button className="header__burger menu-btn-open" type="button">
+            <button
+              className="header__burger menu-btn-open"
+              type="button"
+              onClick={() => (setIsBurgerOpen(true), disableScroll())}
+            >
               <img src={burger} alt="Menu Icon" width="24" height="24" />
             </button>
-            <div className="mobile-menu">
+            <div
+              className={isBurgerOpen ? "mobile-menu is-open" : "mobile-menu"}
+            >
               <button
                 className="mobile-menu__btn-close menu-btn-close"
                 type="button"
+                onClick={() => (setIsBurgerOpen(false), disableScroll())}
               >
                 <img src={iconclose} width="24" height="24" />
               </button>
               <a className="mobile-menu__logo" href="/">
-                <img
-                  src="../assetss/logo-dark.svg"
-                  alt="Логотип сучасної пекарні"
-                />
+                <img src={logodark} alt="Логотип сучасної пекарні" />
               </a>
               <ul className="mobile-menu__list">
-                <li>
+                <li onClick={() => (setIsBurgerOpen(false), disableScroll())}>
                   <a className="mobile-menu__link" href="#traditions-section">
                     Наші традиції
                   </a>
                 </li>
-                <li>
+                <li onClick={() => (setIsBurgerOpen(false), disableScroll())}>
                   <a className="mobile-menu__link" href="#chefs-section">
                     Шеф-кухарі
                   </a>
                 </li>
-                <li>
+                <li onClick={() => (setIsBurgerOpen(false), disableScroll())}>
                   <a className="mobile-menu__link" href="#formats-section">
                     Формати
                   </a>
                 </li>
-                <li>
+                <li onClick={() => (setIsBurgerOpen(false), disableScroll())}>
                   <a className="mobile-menu__link" href="#contact-section">
                     Контакти
                   </a>
@@ -94,6 +103,7 @@ const Banner = () => {
           <button
             className="hero-section__button button modal-btn-open"
             type="button"
+            onClick={() => (setIsModalOpen(true), disableScroll())}
           >
             Замовити дзвінок
           </button>
@@ -117,11 +127,9 @@ const Banner = () => {
           <button
             className="modal__btn-close modal-btn-close"
             type="button"
-            onClick={() => setIsModalOpen(false)}
+            onClick={() => (setIsModalOpen(false), disableScroll())}
           >
-            <svg width="24" height="24">
-              <use href="./images/icons.svg#icon-close"></use>
-            </svg>
+            <img src={iconclose} width="24" height="24" />
           </button>
           <h2 className="modal__title">Замовити дзвінок</h2>
           <p className="modal__text">

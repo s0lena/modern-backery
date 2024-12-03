@@ -1,18 +1,18 @@
 import React, { useEffect, useRef } from "react";
 import Swiper from "swiper";
-import { Navigation, Pagination } from "swiper/modules"; // import Swiper and modules styles
+import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import baker1x from "../assets/baker-man.jpg";
-import baker2x from "../assets/baker-man@2x.jpg";
-import chef1 from "../assets/nastya-chef.jpg";
-import chef2 from "../assets/vlad-chef.jpg";
-import arrowleft from "../assets/icons.svg#icon-arrow";
-import walrus from "../assets/walrus-format.jpg";
-import horseshoe from "../assets/horseshoe-format.jpg";
-import handlebar from "../assets/handlebar-format.jpg";
+import baker1x from "../assets/images/baker-man.jpg";
+import baker2x from "../assets/images/baker-man@2x.jpg";
+import chef1 from "../assets/images/nastya-chef.jpg";
+import chef2 from "../assets/images/vlad-chef.jpg";
+import arrowleft from "../assets/icons/arrow-left.svg";
+import walrus from "../assets/images/walrus-format.jpg";
+import horseshoe from "../assets/images/horseshoe-format.jpg";
+import handlebar from "../assets/images/handlebar-format.jpg";
 
 const InfoSection = () => {
   const swiperRef = useRef(null);
@@ -127,9 +127,7 @@ const InfoSection = () => {
               className="formats-section__button carousel-button prev"
               type="button"
             >
-              <svg width="16" height="16">
-                <use href={arrowleft}></use>
-              </svg>
+              <img width="22" height="22" src={arrowleft}></img>
             </button>
             <div className="formats-section__container swiper-container">
               <ul className="formats-section__list swiper-wrapper">
@@ -271,9 +269,7 @@ const InfoSection = () => {
               className="formats-section__button carousel-button next"
               type="button"
             >
-              <svg width="16" height="16">
-                <use href="../assets/icons.svg#icon-arrow"></use>
-              </svg>
+              <img width="22" height="22" src={arrowleft}></img>
             </button>
           </div>
         </div>
